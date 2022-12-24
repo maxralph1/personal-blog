@@ -14,7 +14,8 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'body' => $this->faker->paragraph(10),
+            'user_id' => $this->faker->numberBetween($min = 1, $max = 1000)
         ];
     }
 }

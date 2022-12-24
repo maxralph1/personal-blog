@@ -15,7 +15,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::latest()->paginate(10);
+        $articles = Article::latest()->with(['user', 'comments', 'reactions'])->paginate(10);
 
         return view('articles.index', ['articles' => $articles]);
     }
@@ -44,6 +44,7 @@ class ArticleController extends Controller
         $article->title = $request->title;
         $article->body = $request->body;
         $article->image = $request->image;
+        $article->user_id = auth()->user()->id;
         $article->save();
 
         return back()->with('message', 'Your article is added.');

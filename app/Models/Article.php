@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Article extends Model
@@ -11,6 +12,8 @@ class Article extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'body', 'image'];
+
+    use SoftDeletes;
 
     public function user()
     {

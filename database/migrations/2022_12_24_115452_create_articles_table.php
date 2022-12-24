@@ -18,7 +18,9 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->string('body');
             $table->string('image');
+            $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

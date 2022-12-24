@@ -14,7 +14,10 @@ class ArticleFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->sentence(5),
+            'body' => $this->faker->paragraph(10),
+            'image' => $this->faker->image($dir = '/tmp', $width = 640, $height = 480),
+            'user_id' => $this->faker->numberBetween($min = 1, $max = 1000)
         ];
     }
 }

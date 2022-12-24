@@ -18,7 +18,9 @@ class CreateReactionsTable extends Migration
             $table->enum('type', ['like', 'love', 'funny', 'dislike', 'angry', 'sad']);
             $table->integer('reactionable_id');
             $table->string('reactionable_type');
+            $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
